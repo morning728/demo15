@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Matvey</title>
+</head>
+<body>
+
+
+ikbo-10-21
+
+
+<div th:each="order : ${orders}">
+  <a th:text="${order.getCreationDate()}" th:href="@{/home/order?id={id}(id=${order.getId()})}">order</a>
+  <div th:text="${order.getId()}">id</div>
+  <div> ITEMS: </div>
+  <div th:each="item : ${order.getItems()}">
+    <div th:text="${item.getId()}">id</div>
+  </div>
+<!--    <form th:method="POST" th:action="@{/home}" th:object="${order}">-->
+<!--      <input type="hidden" name="creationDate" th:value="${order.getId()}">-->
+<!--      <input type="hidden" name="_method" value="DELETE">-->
+<!--      <button type="submit">delete</button>-->
+<!--    </form>-->
+    <br>
+    <form th:method="POST" th:action="@{/home?id={id}(id=${order.getId()})}">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit">delete</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+<form th:method="POST" th:action="@{/home}" th:object="${order}">
+  <div>
+    <div style="display:flex; flex-direction:row">
+      <div>
+        <label for="date"> CreationDate</label>
+        <input type="text" id="date" th:field="*{creationDate}">
+      </div>
+    </div>
+  </div>
+  <button type="submit">submit</button>
+</form>
+
+</body>
+</html>

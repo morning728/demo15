@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>item</title>
+</head>
+<body>
+    <div> ITEMS: </div>
+    <div th:each="item : ${order.getItems()}">
+        <div th:text="${item.getId()}">id</div>
+        <br>
+    </div>
+    <br>
+    <form th:method="POST" th:action="@{/items?id={id}(id=${order.getId()})}" th:object="${item}">
+        <h4>add item to order</h4>
+        <label for="crDate"> CreationDate</label>
+        <input id="crDate" type="text" th:field="*{createDate}">
+        <label for="price"> Price</label>
+        <input id="price" type="text"  th:field="*{price}">
+        <input type="hidden" name="_method" value="POST">
+<!--        <input type="hidden" name="order" value="${order.getId()}">-->
+        <button type="submit">add</button>
+    </form>
+</body>
+</html>
