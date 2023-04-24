@@ -1,0 +1,8 @@
+15) добавить hibernate
+16) аннотация onetomany с fetch lazy
+17) фильтрация с criteria api : http://localhost:8081/items?sort=price123 (itemController getAll())
+18) теперь запросы с помощью реализации jpa. OrderController закоментированные строки.
+19) logs d:logs - не забудь создать
+20) aspect. Добавить логи для controllers (service)
+21) transactional, async, mail -- взять у Димана акк
+22) backups (in service) АОДПУНКТ
